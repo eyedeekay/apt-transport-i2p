@@ -7,11 +7,11 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
+	"encoding/hex"
 	"fmt"
-    "encoding/hex"
 	"io"
 	//"io/ioutil"
-    "log"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -57,7 +57,6 @@ func (m *Message) String() string {
 type AptMethod struct {
 }
 
-
 func (a *AptMethod) Run() {
 	c := make(chan *Message)
 	go output(c)
@@ -69,7 +68,7 @@ func (a *AptMethod) Run() {
 		if line == "" {
 			continue
 		}
-        fmt.Println(line)
+		fmt.Println(line)
 		s := strings.SplitN(line, " ", 2)
 		code, err := strconv.Atoi(s[0])
 		if err != nil {
@@ -77,9 +76,9 @@ func (a *AptMethod) Run() {
 			os.Exit(100)
 		}
 		request := &Message{
-			Status: line,
+			Status:     line,
 			StatusCode: code,
-			Header: Header{},
+			Header:     Header{},
 		}
 
 		for stdin.Scan() {
@@ -128,7 +127,7 @@ func process(c chan<- *Message, m *Message) {
 		fail := &Message{
 			Status: "401 General Failure",
 			Header: Header{},
-			Exit: 100,
+			Exit:   100,
 		}
 		fail.Header.Add("Message", "Status code not implemented")
 
@@ -148,7 +147,7 @@ func fetch(c chan<- *Message, m *Message) {
 			Status: "400 URI Failure",
 			Header: Header{
 				"Message": []string{"Could not open file: " + err.Error()},
-				"URI": []string{uri},
+				"URI":     []string{uri},
 			},
 		}
 		return
@@ -159,14 +158,14 @@ func fetch(c chan<- *Message, m *Message) {
 	// TODO: implement range requests if file already exists
 
 	realURI := strings.TrimPrefix(uri, "i2p://")
-    log.Println("Get: ", realURI)
+	log.Println("Get: ", realURI)
 	resp, err := aptClient.Get(realURI)
 	if err != nil {
 		c <- &Message{
 			Status: "400 URI Failure",
 			Header: Header{
 				"Message": []string{"Could not fetch URI: " + err.Error()},
-				"URI": []string{uri},
+				"URI":     []string{uri},
 			},
 		}
 		return
@@ -193,7 +192,7 @@ func fetch(c chan<- *Message, m *Message) {
 			Status: "400 URI Failure",
 			Header: Header{
 				"Message": []string{"Could not write file: " + err.Error()},
-				"URI": []string{uri},
+				"URI":     []string{uri},
 			},
 		}
 		return

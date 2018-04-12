@@ -27,7 +27,7 @@ func Init() {
 }
 
 func Fatal(err error, str ...string) bool {
-    log.Println(str)
+	log.Println(str)
 	if err != nil {
 		log.Fatal(err, str)
 		return false
