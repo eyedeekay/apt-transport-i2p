@@ -11,7 +11,7 @@ import (
     "encoding/hex"
 	"io"
 	//"io/ioutil"
-    //"log"
+    "log"
 	"os"
 	"strconv"
 	"strings"
@@ -159,7 +159,7 @@ func fetch(c chan<- *Message, m *Message) {
 	// TODO: implement range requests if file already exists
 
 	realURI := strings.TrimPrefix(uri, "i2p://")
-
+    log.Println("Get: ", realURI)
 	resp, err := aptClient.Get(realURI)
 	if err != nil {
 		c <- &Message{
