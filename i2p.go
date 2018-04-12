@@ -20,11 +20,9 @@ func Init() {
 		aptTransport = &http.Transport{
 			Dial: samClient.Dial,
 		}
-        log.Println("Dial function set.")
 		aptClient = &http.Client{
 			Transport: aptTransport,
 		}
-        log.Println("Transport client created.")
 	}
 }
 
