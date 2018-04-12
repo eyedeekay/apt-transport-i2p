@@ -8,6 +8,8 @@ a plain HTTP transport for apt, and by modified I mean like, a couple dozen
 lines. This way, it uses an ephemeral destination instead of the HTTP proxy
 which could be associated with your other traffic.
 
+Also I just think it's easier.
+
 To install it:
 --------------
 
