@@ -23,10 +23,10 @@ func Init(conf ...string) {
 		aptTransport = &http.Transport{
 			MaxIdleConns:          0,
 			MaxIdleConnsPerHost:   10,
-			DisableKeepAlives:     true,
-			ResponseHeaderTimeout: time.Duration(2) * time.Minute,
-			ExpectContinueTimeout: time.Duration(2) * time.Minute,
-			IdleConnTimeout:       time.Duration(6) * time.Minute,
+			DisableKeepAlives:     false,
+			//ResponseHeaderTimeout: time.Duration(2) * time.Minute,
+			//ExpectContinueTimeout: time.Duration(2) * time.Minute,
+			//IdleConnTimeout:       time.Duration(6) * time.Minute,
 			TLSNextProto:          make(map[string]func(authority string, c *tls.Conn) http.RoundTripper),
 			Dial:                  samClient.Dial,
 		}
