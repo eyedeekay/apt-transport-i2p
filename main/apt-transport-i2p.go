@@ -5,7 +5,8 @@ import (
 )
 
 func main() {
-	Init()
+	//Init("/etc/apt-transport-i2p/apt-transport-i2p.conf")
+    Init()
 	a := AptMethod{}
 	a.Run()
 }
