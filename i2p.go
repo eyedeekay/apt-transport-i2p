@@ -23,7 +23,7 @@ func Init(conf ...string) {
 		aptTransport = &http.Transport{
 			MaxIdleConns:          0,
 			MaxIdleConnsPerHost:   10,
-			DisableKeepAlives:     false,
+			DisableKeepAlives:     true,
 			ResponseHeaderTimeout: time.Duration(2) * time.Minute,
 			ExpectContinueTimeout: time.Duration(2) * time.Minute,
 			IdleConnTimeout:       time.Duration(6) * time.Minute,
@@ -41,7 +41,7 @@ func Init(conf ...string) {
 
 func ParseConfig(conf []string) (string, string, uint, uint, uint, uint, uint, uint, bool) {
 	samhost, samport := "127.0.0.1", "7656"
-	inlen, outlen, inquantity, outquantity, backupin, backupout := uint(2), uint(2), uint(6), uint(2), uint(5), uint(2)
+	inlen, outlen, inquantity, outquantity, backupin, backupout := uint(2), uint(2), uint(15), uint(2), uint(5), uint(2)
     debug := false
     if len(conf) == 1 {
         //TODO: Read in config file and put the variables into the return values. for/range+switch
