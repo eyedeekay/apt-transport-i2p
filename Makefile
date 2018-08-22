@@ -26,7 +26,7 @@ checkinstall: release description-pak
 	checkinstall --default \
 		--install=no \
 		--fstrans=yes \
-		--maintainer=problemsolver@openmailbox.org \
+		--maintainer=eyedeekay@safe-mail.net \
 		--pkgname="apt-transport-i2p" \
 		--pkgversion="$(VERSION)" \
 		--pkglicense=gpl \
@@ -42,7 +42,7 @@ checkinstall-arm: build-arm description-pak static-include static-exclude
 	checkinstall --default \
 		--install=no \
 		--fstrans=yes \
-		--maintainer=problemsolver@openmailbox.org \
+		--maintainer=eyedeekay@safe-mail.net \
 		--pkgname="apt-transport-i2p" \
 		--pkgversion="$(VERSION)-arm" \
 		--pkglicense=gpl \
