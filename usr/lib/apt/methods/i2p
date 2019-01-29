@@ -1,0 +1,2 @@
+#! /bin/sh
+/usr/bin/apt-transport-i2p $@ &
