@@ -1,24 +1,63 @@
+#!/usr/bin/make -f
+
+## Copyright (C) 2012 - 2018 ENCRYPTED SUPPORT LP <adrelanos@riseup.net>
+## See the file COPYING for copying conditions.
+
+## genmkfile - Makefile - version 1.5
+
+## This is a copy.
+## master location:
+## https://github.com/Whonix/genmkfile/blob/master/usr/share/genmkfile/Makefile
+
+fmt:
+	gofmt -w *.go */*.go
+
+GENMKFILE_PATH ?= /usr/share/genmkfile
+GENMKFILE_ROOT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+
+export GENMKFILE_PATH
+export GENMKFILE_ROOT_DIR
+
+include $(GENMKFILE_PATH)/makefile-full
+
+
 VERSION = 0.1
 
 lib:
 	go build .
 
+deps:
+	go get -u github.com/eyedeekay/littleboss
+	go get -u github.com/eyedeekay/portcheck
+	go get -u github.com/eyedeekay/sam-forwarder
+
 build:
-	cd main && \
-		go build -o ../bin/apt-transport-i2p
+	go build -a \
+		-tags netgo \
+		-o usr/bin/apt-transport-i2p \
+		./main
 
 release:
-	cd main && \
-	GOOS=linux GOARCH=amd64 go build \
-		-a \
-		-tags netgo \
+	go build -a -tags netgo \
 		-ldflags '-w -extldflags "-static"' \
-		-o bin/apt-transport-i2p
+		-o usr/bin/apt-transport-i2p \
+		./main
 
-install:
-	mkdir -p /etc/apt-transport-i2p/
-	install -m755 bin/apt-transport-i2p /usr/lib/apt/methods/i2p
-	install etc/apt-transport-i2p/apt-transport-i2p.conf /etc/apt-transport-i2p/apt-transport-i2p.conf
+config:
+	rm -rfv usr/share/apt-transport-i2p usr/lib/apt/methods
+	mkdir -pv usr/share/apt-transport-i2p usr/lib/apt/methods
+	@echo '#! /bin/sh' | tee usr/lib/apt/methods/i2p
+	@echo '/usr/bin/apt-transport-i2p $$@ &' | tee -a usr/lib/apt/methods/i2p
+	chmod +x usr/lib/apt/methods/i2p
+	@echo 'type = client' | tee usr/share/apt-transport-i2p/apt.ini
+	@echo 'host = 127.0.0.1' | tee -a usr/share/apt-transport-i2p/apt.ini
+	@echo 'port = 7844' | tee -a usr/share/apt-transport-i2p/apt.ini
+	@echo 'inbound.length = 2' | tee -a usr/share/apt-transport-i2p/apt.ini
+	@echo 'outbound.length = 2' | tee -a usr/share/apt-transport-i2p/apt.ini
+	@echo 'inbound.quantity = 1' | tee -a usr/share/apt-transport-i2p/apt.ini
+	@echo 'outbound.quantity = 1' | tee -a usr/share/apt-transport-i2p/apt.ini
+	@echo 'inbound.backupQuantity = 1' | tee -a usr/share/apt-transport-i2p/apt.ini
+	@echo 'outbound.backupQuantity = 1' | tee -a usr/share/apt-transport-i2p/apt.ini
 
 description-pak:
 
@@ -26,7 +65,7 @@ checkinstall: release description-pak
 	checkinstall --default \
 		--install=no \
 		--fstrans=yes \
-		--maintainer=eyedeekay@safe-mail.net \
+		--maintainer=hankhill19580@gmail.com \
 		--pkgname="apt-transport-i2p" \
 		--pkgversion="$(VERSION)" \
 		--pkglicense=gpl \
@@ -38,20 +77,12 @@ checkinstall: release description-pak
 		--backup=no \
 		--pakdir=../
 
-checkinstall-arm: build-arm description-pak static-include static-exclude
-	checkinstall --default \
-		--install=no \
-		--fstrans=yes \
-		--maintainer=eyedeekay@safe-mail.net \
-		--pkgname="apt-transport-i2p" \
-		--pkgversion="$(VERSION)-arm" \
-		--pkglicense=gpl \
-		--pkggroup=net \
-		--pkgsource=./ \
-		--deldoc=yes \
-		--deldesc=yes \
-		--delspec=yes \
-		--backup=no \
-		--exclude=arm-exclude \
-		--include=arm-include \
-		--pakdir=../
+test:
+	./usr/lib/apt/methods/i2p -littleboss=start &
+	@echo "started self-supervising server"
+	sleep 5
+	./usr/lib/apt/methods/i2p
+
+
+kill:
+	./usr/lib/apt/methods/i2p -littleboss=stop
