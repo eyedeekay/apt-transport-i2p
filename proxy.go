@@ -52,12 +52,13 @@ func TranslateAddr(a string) string {
 	x := strings.TrimPrefix(t[0], "i2p://")
 	x = strings.TrimPrefix(x, "http://")
 	x = strings.TrimPrefix(x, "https://")
+    x = strings.TrimPrefix(x, "ftp://")
 	p, err := Find(x)
 	if err != nil {
 		log.Fatal(err)
 	}
-	addr := "http://" + ProxyHost() + ":" + p.TargetPort + "/" + t[1]
-	log.Println(addr)
+	raddr := "http://" + ProxyHost() + ":" + p.TargetPort + "/" + t[1]
+	log.Println(raddr)
 	return raddr
 }
 

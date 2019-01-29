@@ -47,8 +47,14 @@ config:
 	rm -rfv usr/share/apt-transport-i2p usr/lib/apt/methods
 	mkdir -pv usr/share/apt-transport-i2p usr/lib/apt/methods
 	@echo '#! /bin/sh' | tee usr/lib/apt/methods/i2p
-	@echo '/usr/bin/apt-transport-i2p $$@ &' | tee -a usr/lib/apt/methods/i2p
+	@echo '/usr/bin/apt-transport-i2p --littleboss=status 2>/dev/null || \' | tee -a usr/lib/apt/methods/i2p
+	@echo '    nohup /usr/bin/apt-transport-i2p --littleboss=start & exit' | tee -a usr/lib/apt/methods/i2p
+	@echo '/usr/bin/apt-transport-i2p --littleboss=status 2>/dev/null && \' | tee -a usr/lib/apt/methods/i2p
+	@echo '    /usr/bin/apt-transport-i2p $$@ &' | tee -a usr/lib/apt/methods/i2p
 	chmod +x usr/lib/apt/methods/i2p
+	ln -sf usr/lib/apt/methods/i2p usr/lib/apt/methods/i2p+http
+	ln -sf usr/lib/apt/methods/i2p usr/lib/apt/methods/i2p+https
+	ln -sf usr/lib/apt/methods/i2p usr/lib/apt/methods/i2p+ftp
 	@echo 'type = client' | tee usr/share/apt-transport-i2p/apt.ini
 	@echo 'host = 127.0.0.1' | tee -a usr/share/apt-transport-i2p/apt.ini
 	@echo 'port = 7844' | tee -a usr/share/apt-transport-i2p/apt.ini
