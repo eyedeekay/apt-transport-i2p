@@ -56,7 +56,9 @@ func TranslateAddr(a string) string {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return "http://" + ProxyHost() + ":" + p.TargetPort + "/" + t[1]
+	addr := "http://" + ProxyHost() + ":" + p.TargetPort + "/" + t[1]
+	log.Println(addr)
+	return raddr
 }
 
 func (p *Proxy) ServeHTTP(wr http.ResponseWriter, r *http.Request) {
