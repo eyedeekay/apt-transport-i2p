@@ -1,0 +1,7 @@
+2019/01/28 23:29:53 []
+2019/01/28 23:29:53 Starting proxy server on 127.0.0.1:7844
+littleboss: status requested
+littleboss: status requested
+littleboss: stop requested
+littleboss: timeout, forcing process exit
+littleboss: exit: waitid: no child processes
