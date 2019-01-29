@@ -26,8 +26,8 @@ func main() {
 				log.Fatal("ListenAndServe:", err)
 			}
 		}
-        log.Println("Tunnels are running.")
-        a := AptMethod{}
-        a.Run()
+		log.Println("Tunnels are running.")
+		a := AptMethod{}
+		a.Run()
 	})
 }

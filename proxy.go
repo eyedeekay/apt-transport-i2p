@@ -49,14 +49,14 @@ func NewProxy() *Proxy { return &Proxy{} }
 
 func TranslateAddr(a string) string {
 	t := strings.SplitN(a, ".i2p/", 2)
-    x := strings.TrimPrefix(t[0], "i2p://")
+	x := strings.TrimPrefix(t[0], "i2p://")
 	x = strings.TrimPrefix(x, "http://")
 	x = strings.TrimPrefix(x, "https://")
-    p, err := Find(x)
-    if err != nil {
-        log.Fatal(err)
-    }
-	return "http://" + ProxyHost() +":"+ p.TargetPort + "/" + t[1]
+	p, err := Find(x)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return "http://" + ProxyHost() + ":" + p.TargetPort + "/" + t[1]
 }
 
 func (p *Proxy) ServeHTTP(wr http.ResponseWriter, r *http.Request) {

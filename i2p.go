@@ -30,7 +30,7 @@ func ReadConfigs() []string {
 }
 
 func readConfigFile(filename string) []string {
-	file, err := ioutil.ReadFile("/etc/apt/sources.list.d/"+filename)
+	file, err := ioutil.ReadFile("/etc/apt/sources.list.d/" + filename)
 	var s []string
 	if err != nil {
 		log.Fatal(err)
@@ -75,7 +75,7 @@ func Init(addr string) (*samforwarder.SAMClientForwarder, error) {
 	if err != nil {
 		return nil, err
 	}
-    log.Println("Initializing tunnel")
+	log.Println("Initializing tunnel")
 	SetProxyAddr(globalConf.TargetHost, globalConf.TargetPort)
 	if client, err := Find(addr); client != nil && err == nil {
 		return client, nil

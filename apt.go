@@ -159,7 +159,7 @@ func fetch(c chan<- *Message, m *Message) {
 
 	realURI := TranslateAddr(uri)
 
-    //"http://" + ProxyAddr() + strings.TrimPrefix(, "i2p://http://")
+	//"http://" + ProxyAddr() + strings.TrimPrefix(, "i2p://http://")
 	log.Println("Get: ", realURI)
 	resp, err := aptClient.Get(realURI)
 	if err != nil {
