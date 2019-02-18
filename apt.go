@@ -2,7 +2,6 @@ package apti2p
 
 import (
 	"bufio"
-	//"bytes"
 	"crypto/md5"
 	"crypto/sha1"
 	"crypto/sha256"
@@ -10,7 +9,6 @@ import (
 	"encoding/hex"
 	"fmt"
 	"io"
-	//"io/ioutil"
 	"log"
 	"os"
 	"strconv"
@@ -159,8 +157,18 @@ func fetch(c chan<- *Message, m *Message) {
 
 	realURI := TranslateAddr(uri)
 
-	//"http://" + ProxyAddr() + strings.TrimPrefix(, "i2p://http://")
 	log.Println("Get: ", realURI)
+	aptClient, err := InitClient()
+	if err != nil {
+		c <- &Message{
+			Status: "400 URI Failure",
+			Header: Header{
+				"Message": []string{"Client generation error: " + err.Error()},
+				"URI":     []string{uri},
+			},
+		}
+		return
+	}
 	resp, err := aptClient.Get(realURI)
 	if err != nil {
 		c <- &Message{

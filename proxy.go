@@ -16,7 +16,9 @@ type HttpConnection struct {
 type HttpConnectionChannel chan *HttpConnection
 
 var connChannel = make(HttpConnectionChannel)
-var aptClient *http.Client
+
+//var aptClient *client
+//var aptClient *http.Client
 var addr = "127.0.0.1:7844"
 
 func ProxyAddr() string {
@@ -52,7 +54,7 @@ func TranslateAddr(a string) string {
 	x := strings.TrimPrefix(t[0], "i2p://")
 	x = strings.TrimPrefix(x, "http://")
 	x = strings.TrimPrefix(x, "https://")
-    x = strings.TrimPrefix(x, "ftp://")
+	x = strings.TrimPrefix(x, "ftp://")
 	p, err := Find(x)
 	if err != nil {
 		log.Fatal(err)
@@ -85,5 +87,11 @@ func (p *Proxy) ServeHTTP(wr http.ResponseWriter, r *http.Request) {
 	wr.WriteHeader(resp.StatusCode)
 	io.Copy(wr, resp.Body)
 	resp.Body.Close()
+
+}
+
+func InitClient() (*http.Client, error) {
+	ret := http.Client{}
+	return &ret, nil
 
 }
