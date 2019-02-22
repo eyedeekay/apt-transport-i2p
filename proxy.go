@@ -17,8 +17,6 @@ type HttpConnectionChannel chan *HttpConnection
 
 var connChannel = make(HttpConnectionChannel)
 
-//var aptClient *client
-//var aptClient *http.Client
 var addr = "127.0.0.1:7844"
 
 func ProxyAddr() string {

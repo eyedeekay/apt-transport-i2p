@@ -46,24 +46,9 @@ release:
 config:
 	rm -rfv usr/share/apt-transport-i2p usr/lib/apt/methods
 	mkdir -pv usr/share/apt-transport-i2p usr/lib/apt/methods
-	@echo '#! /bin/sh' | \
-		tee usr/lib/apt/methods/i2p
-	@echo 'echo "checking if tunnels are running"' | \
-		tee -a usr/lib/apt/methods/i2p
-	@echo '/usr/bin/apt-transport-i2p --littleboss=status 2>/dev/null || \' | \
-		tee -a usr/lib/apt/methods/i2p
-	@echo '    nohup /usr/bin/apt-transport-i2p --littleboss=start & exit' | \
-		tee -a usr/lib/apt/methods/i2p
-	@echo 'echo "checking for a package"' | \
-		tee -a usr/lib/apt/methods/i2p
-	@echo '/usr/bin/apt-transport-i2p --littleboss=status 2>/dev/null && \' | \
-		tee -a usr/lib/apt/methods/i2p
-	@echo '    /usr/bin/apt-transport-i2p $$@' | \
-		tee -a usr/lib/apt/methods/i2p
-	chmod +x usr/lib/apt/methods/i2p
-	install -m755 usr/lib/apt/methods/i2p usr/lib/apt/methods/i2p+http
-	install -m755 usr/lib/apt/methods/i2p usr/lib/apt/methods/i2p+https
-	install -m755 usr/lib/apt/methods/i2p usr/lib/apt/methods/i2p+ftp
+	install -m755 usr/bin/apt-transport-i2p usr/lib/apt/methods/i2p+http
+	install -m755 usr/bin/apt-transport-i2p usr/lib/apt/methods/i2p+https
+	install -m755 usr/bin/apt-transport-i2p usr/lib/apt/methods/i2p+ftp
 	@echo 'type = client' | tee usr/share/apt-transport-i2p/apt.ini
 	@echo 'host = 127.0.0.1' | tee -a usr/share/apt-transport-i2p/apt.ini
 	@echo 'port = 7844' | tee -a usr/share/apt-transport-i2p/apt.ini

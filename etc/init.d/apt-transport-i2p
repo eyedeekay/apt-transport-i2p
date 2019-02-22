@@ -1,0 +1,64 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+
+dir="/usr/share/apt-transport-i2p"
+cmd="/usr/bin/apt-transport-i2p"
+user="apt-transport-i2p"
+
+name=`basename $0`
+pid_file="/var/run/$name.pid"
+stdout_log="/var/log/$name.log"
+stderr_log="/var/log/$name.err"
+
+get_pid() {
+    cat "$pid_file"
+}
+
+is_running() {
+    [ -f "$pid_file" ] && ps -p `get_pid` > /dev/null 2>&1
+}
+
+case "$1" in
+    start)
+        sudo -u "$user" $cmd --littleboss=start >> "$stdout_log" 2>> "$stderr_log" &
+        echo $! > "$pid_file"
+        if ! is_running; then
+            echo "Unable to start, see $stdout_log and $stderr_log"
+            exit 1
+        fi
+        ;;
+    stop)
+        if is_running; then
+            sudo -u "$user" $cmd --littleboss=stop >> "$stdout_log" 2>> "$stderr_log" &
+        fi
+        ;;
+    restart)
+        if is_running; then
+            sudo -u "$user" $cmd --littleboss=reload >> "$stdout_log" 2>> "$stderr_log" &
+        else
+            sudo -u "$user" $cmd --littleboss=start >> "$stdout_log" 2>> "$stderr_log" &
+            echo $! > "$pid_file"
+            if ! is_running; then
+                echo "Unable to start, see $stdout_log and $stderr_log"
+                exit 1
+            fi
+        fi
+        ;;
+    status)
+        sudo -u "$user" $cmd --littleboss=status >> "$stdout_log" 2>> "$stderr_log" &
+        ;;
+    *)
+    echo "Usage: $0 {start|stop|restart|status}"
+    exit 1
+    ;;
+esac
+
+exit 0

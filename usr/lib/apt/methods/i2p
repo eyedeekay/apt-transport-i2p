@@ -1,7 +1,0 @@
-#! /bin/sh
-echo "checking if tunnels are running"
-/usr/bin/apt-transport-i2p --littleboss=status 2>/dev/null || \
-    nohup /usr/bin/apt-transport-i2p --littleboss=start & exit
-echo "checking for a package"
-/usr/bin/apt-transport-i2p --littleboss=status 2>/dev/null && \
-    /usr/bin/apt-transport-i2p $@
