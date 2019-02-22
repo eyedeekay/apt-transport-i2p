@@ -15,8 +15,8 @@ user="apt-transport-i2p"
 
 name=`basename $0`
 pid_file="/var/run/$name.pid"
-stdout_log="/var/log/$name.log"
-stderr_log="/var/log/$name.err"
+stdout_log="/var/log/apt-transport-i2p/$name.log"
+stderr_log="/var/log/apt-transport-i2p/$name.err"
 
 get_pid() {
     cat "$pid_file"
