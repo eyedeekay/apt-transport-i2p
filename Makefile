@@ -16,7 +16,7 @@ release:
 
 install:
 	mkdir -p /etc/apt-transport-i2p/
-	install -m755 bin/apt-transport-i2p /usr/lib/apt/methods/i2p
+	install -m755 bin/apt-transport-i2p /usr/lib/apt/methods/i2psam
 	install etc/apt-transport-i2p/apt-transport-i2p.conf /etc/apt-transport-i2p/apt-transport-i2p.conf
 
 description-pak:

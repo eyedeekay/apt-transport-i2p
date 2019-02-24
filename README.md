@@ -46,7 +46,7 @@ Once you've enabled the just:
 
         make build && sudo make install
 
-to install bin/apt-transport-i2p to /usr/lib/apt/methods/i2p
+to install bin/apt-transport-i2p to /usr/lib/apt/methods/i2psam
 
 To use it:
 ---------
