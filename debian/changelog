@@ -1,5 +1,24 @@
-apt-transport-i2p (0.0~git20190223.eb069b9-1) UNRELEASED; urgency=medium
+apt-transport-i2p (0.0~git20190223.eb069b9ubuntu2) bionic; urgency=medium
 
+  [ idk ]
+  * fix local import
+
+ -- idk <hankhill19580@gmail.com>  Thu, 28 Feb 2019 22:12:10 -0500
+
+apt-transport-i2p (0.0~git20190223.eb069b9ubuntu1) bionic; urgency=medium
+
+  [ idk ]
+  * fix dependencies
+
+ -- idk <hankhill19580@gmail.com>  Thu, 28 Feb 2019 22:06:11 -0500
+
+
+apt-transport-i2p (0.0~git20190223.eb069b9) bionic; urgency=medium
+
+  [ idk ]
   * Initial release (Closes: TODO)
 
- -- idk <hankhill19580@gmail.com>  Sat, 23 Feb 2019 12:38:18 -0500
+  [ lair repo key ]
+  * change install path
+
+ -- idk <hankhill19580@gmail.com>  Thu, 28 Feb 2019 19:30:49 -0500

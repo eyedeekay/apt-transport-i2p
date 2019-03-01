@@ -2,8 +2,7 @@ package main
 
 import (
     "os"
-	//. "github.com/eyedeekay/apt-transport-i2p"
-    . ".."
+	. "github.com/eyedeekay/apt-transport-i2p"
 )
 
 func main() {
