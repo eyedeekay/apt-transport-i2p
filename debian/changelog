@@ -1,6 +1,13 @@
 apt-transport-i2p (0.0~git20190223.eb069b9ubuntu2) bionic; urgency=medium
 
   [ idk ]
+  * symlink in /usr/lib/apt/methods
+
+ -- idk <hankhill19580@gmail.com>  Thu, 28 Feb 2019 22:12:10 -0500
+
+apt-transport-i2p (0.0~git20190223.eb069b9ubuntu2) bionic; urgency=medium
+
+  [ idk ]
   * fix local import
 
  -- idk <hankhill19580@gmail.com>  Thu, 28 Feb 2019 22:12:10 -0500
