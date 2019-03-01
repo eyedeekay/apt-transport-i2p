@@ -1,0 +1,1 @@
+ln -sf /usr/bin/apt-transport-i2p /usr/lib/apt/methods/i2psam
