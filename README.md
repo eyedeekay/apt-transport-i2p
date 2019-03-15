@@ -51,7 +51,9 @@ to install bin/apt-transport-i2p to /usr/lib/apt/methods/i2psam
 To use it:
 ---------
 
-To add an eepSite to your sources.list, for example(This example site is down,
-I'll have a new one for you to use shortly):
+Adding this to your sources.list.d will configure apt to seek updates to
+ppa.launchpad.net/i2p-maintainers from a caching proxy at the b32 address:
+```h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p```
 
-        deb i2psam://http://wnhxwrq4fkn3cov6bnqsdaniubeo3625rmsm53yaz336bxvtiqeq.b32.i2p/deb-pkg rolling main
+        deb i2p://h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p/ppa.launchpad.net/i2p-maintainers/i2p/ubuntu bionic main
+        deb-src i2p://h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p/ppa.launchpad.net/i2p-maintainers/i2p/ubuntu bionic main
