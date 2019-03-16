@@ -55,5 +55,5 @@ Adding this to your sources.list.d will configure apt to seek updates to
 ppa.launchpad.net/i2p-maintainers from a caching proxy at the b32 address:
 ```h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p```
 
-        deb i2p://h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p/ppa.launchpad.net/i2p-maintainers/i2p/ubuntu bionic main
-        deb-src i2p://h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p/ppa.launchpad.net/i2p-maintainers/i2p/ubuntu bionic main
+        deb i2psam://h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p/ppa.launchpad.net/i2p-maintainers/i2p/ubuntu bionic main
+        deb-src i2psam://h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p/ppa.launchpad.net/i2p-maintainers/i2p/ubuntu bionic main

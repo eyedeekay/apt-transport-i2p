@@ -15,7 +15,7 @@ release:
 		./main
 
 orig:
-	tar --exclude=.git --exclude=debian -czvf ../apt-transport-i2p_0.1.orig.tar.gz .
+	tar --exclude=.git --exclude=bin --exclude=debian -czvf ../apt-transport-i2p_0.1.orig.tar.gz .
 
 install:
 	mkdir -p /etc/apt-transport-i2p/
