@@ -14,6 +14,9 @@ release:
 		-o ./bin/apt-transport-i2p \
 		./main
 
+orig:
+	tar --exclude=.git --exclude=debian -czvf ../apt-transport-i2p_0.1.orig.tar.gz .
+
 install:
 	mkdir -p /etc/apt-transport-i2p/
 	install -m755 bin/apt-transport-i2p /usr/lib/apt/methods/i2psam

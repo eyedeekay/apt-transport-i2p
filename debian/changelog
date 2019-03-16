@@ -1,3 +1,10 @@
+apt-transport-i2p (0.1) bionic; urgency=medium
+
+  [ idk ]
+  * create a stable version
+
+ -- idk <hankhill19580@gmail.com>  Sat, 16 Mar 2019 14:14:20 -0500
+
 apt-transport-i2p (0.0~git20190223.eb069b9ubuntu2) bionic; urgency=medium
 
   [ idk ]

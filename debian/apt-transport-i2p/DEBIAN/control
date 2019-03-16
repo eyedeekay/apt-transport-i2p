@@ -1,0 +1,18 @@
+Package: apt-transport-i2p
+Version: 0.1
+Architecture: amd64
+Maintainer: idk <hankhill19580@gmail.com>
+Installed-Size: 4552
+Depends: libc6 (>= 2.3.2), i2p | i2pd
+Built-Using: golang-1.11 (= 1.11.5-1), golang-github-eyedeekay-gosam (= 0.1.0+git20190221.2896c83ubuntu1+nmu3+aptbuild1)
+Section: devel
+Priority: optional
+Homepage: https://github.com/eyedeekay/apt-transport-i2p
+Description: An apt transport method enabling i2p using the SAM bridge.
+ i2p transport for apt This is a simple transport for downloading debian
+ packages from a repository over i2p. It uses the SAM bridge and is
+ pretty much just a modified version of diocles/apt-tranport-http-golang
+ (https://github.com/diocles/apt-transport-http-golang), a plain HTTP
+ transport for apt, and by modified I mean like, a couple dozen lines. This
+ way, it uses an ephemeral destination instead of the HTTP proxy which
+ could be associated with your other traffic.
