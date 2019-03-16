@@ -1,4 +1,0 @@
-shlibs:Depends=libc6 (>= 2.3.2)
-misc:Built-Using=golang-1.11 (= 1.11.5-1), golang-github-eyedeekay-gosam (= 0.1.0+git20190221.2896c83ubuntu1+nmu3+aptbuild1)
-misc:Depends=
-misc:Pre-Depends=
