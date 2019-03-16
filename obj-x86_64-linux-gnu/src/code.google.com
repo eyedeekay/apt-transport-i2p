@@ -1,1 +1,0 @@
-/usr/share/gocode/src/code.google.com
