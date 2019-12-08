@@ -2,6 +2,12 @@
 
 override_dh_auto_install:
 	dh_auto_install -- --no-source
+	mkdir -p debian/apt-transport-i2p/usr/lib/apt/methods/ \
+		debian/apt-transport-i2p/etc/apt-transport-i2p/
+	install etc/apt-transport-i2p/apt-transport-i2p.conf \
+		debian/apt-transport-i2p/etc/apt-transport-i2p/apt-transport-i2p.conf
+	ln -sf debian/apt-transport-i2p/usr/bin/apt-transport-i2p \
+		debian/apt-transport-i2p/usr/lib/apt/methods/i2psam
 
 %:
 	dh $@ --buildsystem=golang --with=golang
