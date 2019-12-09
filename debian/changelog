@@ -1,3 +1,10 @@
+apt-transport-i2p (0.2) bionic; urgency=medium
+
+  [ idk ]
+  * Improve the packaging
+
+ -- idk <hankhill19580@gmail.com>  Sun, 08 Dec 2019 07:08:46 -0500
+
 apt-transport-i2p (0.1) bionic; urgency=medium
 
   [ idk ]
