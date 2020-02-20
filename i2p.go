@@ -2,7 +2,7 @@ package apti2p
 
 import (
 	"crypto/tls"
-	"github.com/eyedeekay/goSam"
+	"github.com/eyedeekay/gosam"
 	"io/ioutil"
 	"log"
 	"net/http"

@@ -1,6 +1,6 @@
 VERSION = 0.2
 
-GO111MODULE=on
+GO111MODULE=off
 
 lib:
 	go build .
@@ -15,3 +15,7 @@ release:
 		-ldflags '-w -extldflags "-static"' \
 		-o ./bin/apt-transport-i2p \
 		./apt-transport-i2p
+
+link:
+	rm -rf $(HOME)/go/src/github.com/eyedeekay/gosam
+	ln -sf $(HOME)/go/src/github.com/eyedeekay/goSam $(HOME)/go/src/github.com/eyedeekay/gosam
