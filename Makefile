@@ -1,5 +1,7 @@
 VERSION = 0.2
 
+GO111MODULE=on
+
 lib:
 	go build .
 
