@@ -57,3 +57,4 @@ ppa.launchpad.net/i2p-maintainers from a caching proxy at the b32 address:
 
         deb i2psam://h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p/ppa.launchpad.net/i2p-maintainers/i2p/ubuntu bionic main
         deb-src i2psam://h2knzawve56vtiimbdsl74bmbuw7xr65xhgrdjtjnbfxxw4hsqlq.b32.i2p/ppa.launchpad.net/i2p-maintainers/i2p/ubuntu bionic main
+
